@@ -18,7 +18,6 @@ public class PostRepositoryInMemoryImpl implements PostRepository {
 
     public List<Post> all() {
         return new ArrayList<>(storageMap.values());
-
     }
 
     public Optional<Post> getById(long id) {
@@ -44,7 +43,13 @@ public class PostRepositoryInMemoryImpl implements PostRepository {
         return post;
     }
 
-    public void removeById(long id) {
-        storageMap.remove(id);
+    public Optional<Post> removeById(long id) {
+        if (!storageMap.containsKey(id)) {
+            return Optional.empty();
+        }
+        Post p = storageMap.get(id);
+        p.setRemoved(true);
+        storageMap.put(id, p);
+        return Optional.of(p);
     }
 }

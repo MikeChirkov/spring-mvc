@@ -5,13 +5,15 @@ import java.util.Objects;
 public class Post {
     private long id;
     private String content;
+    private Boolean removed;
 
     public Post() {
     }
 
-    public Post(long id, String content) {
+    public Post(long id, String content, Boolean removed) {
         this.id = id;
         this.content = content;
+        this.removed = removed;
     }
 
     public long getId() {
@@ -28,6 +30,14 @@ public class Post {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public Boolean getRemoved() {
+        return removed;
+    }
+
+    public void setRemoved(Boolean removed) {
+        this.removed = removed;
     }
 
     @Override

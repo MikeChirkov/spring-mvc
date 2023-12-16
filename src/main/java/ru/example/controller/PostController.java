@@ -1,7 +1,7 @@
 package ru.example.controller;
 
 import org.springframework.web.bind.annotation.*;
-import ru.example.model.Post;
+import ru.example.dto.PostDto;
 import ru.example.service.PostService;
 
 import java.util.List;
@@ -16,22 +16,22 @@ public class PostController {
     }
 
     @GetMapping
-    public List<Post> all() {
+    public List<PostDto> all() {
         return service.all();
     }
 
     @GetMapping("/{id}")
-    public Post getById(@PathVariable long id) {
+    public PostDto getById(@PathVariable long id) {
         return service.getById(id);
     }
 
     @PostMapping
-    public Post save(@RequestBody Post post) {
+    public PostDto save(@RequestBody PostDto post) {
         return service.save(post);
     }
 
     @DeleteMapping("/{id}")
-    public void removeById(long id) {
+    public void removeById(@PathVariable long id) {
         service.removeById(id);
     }
 }
